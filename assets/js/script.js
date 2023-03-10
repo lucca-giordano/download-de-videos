@@ -10,3 +10,11 @@ const downloadVideo = async (videoUrl, filename) => {
 }
 
 */
+
+const videourl = document.querySelector('.textinput').value;
+const downloadButton = document.querySelector('.button');
+
+downloadButton.addEventListener('click', () => {
+    event.preventDefault();
+    downloadButton.preventDefault();
+});
