@@ -1,0 +1,19 @@
+{
+    "manifest_version" : 3,
+    "name" : "Download de videos",
+    "version" : "1.0.0",
+
+    "description" : "Uma aplicação para baixar videos da internet",
+    "author" : "Lucca Giordano",
+    "permissions" : [
+        "activeTab",
+        "tabs",
+        "contextMenus",
+        "notifications"
+    ],
+    "action" : {
+        "default_title" : "Download de videos",
+        "default_popup" : "index.html"
+
+    }
+}
