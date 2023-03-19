@@ -1,20 +1,26 @@
-/*
+const axios = require('axios');
+const fs = require('fs');
 
-const downloadVideo = async (videoUrl, filename) => {
-    const response = await fetch(videoUrl)
-    const blob = await response.blob()
-    const link = document.createElement('a')
-    link.href = URL.createObjectURL(blob)
-    link.download = filename
-    link.click()
-}
+const tweetUrl = document.querySelector('.textinput').value;
 
-*/
-
-const videourl = document.querySelector('.textinput').value;
 const downloadButton = document.querySelector('.button');
 
 downloadButton.addEventListener('click', () => {
-    event.preventDefault();
-    downloadButton.preventDefault();
+    axios.get(tweetUrl)
+    .then(response => {
+    const html = response.data;
+    const videoUrl = html.match(/"content_url":"(.*?)"/)[1];
+
+    axios({
+        method: 'get',
+        url: videoUrl,
+        responseType: 'stream'
+        }
+    )
+    .then(response => {
+        response.data.pipe(fs.createWriteStream('myvideo.mp4'));
+            }
+        );
+    }
+);
 });
